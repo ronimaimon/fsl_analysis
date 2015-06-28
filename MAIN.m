@@ -2,7 +2,7 @@ clc; clear all; close all;
 
 %% CHOOSE CUSTOMIZED FUNC
 
-customized_func = @removeTRs;
+customized_func = @emptyFunc;
 
 %% PERFORM ANALYSIS
 
