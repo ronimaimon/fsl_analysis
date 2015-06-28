@@ -1,4 +1,4 @@
-% clc; clear all; close all;
+clc; clear all; close all;
 
 %% CHOOSE CUSTOMIZED FUNC
 
@@ -98,22 +98,8 @@ movefile([fullfile(ws.root_dir, 'anatomy', 'brain_v') num2str(choice) '.nii.gz']
             fullfile(ws.root_dir, 'anatomy', 'brain.nii.gz'));
 ws.extracted_brain = fullfile(ws.root_dir, 'anatomy', 'brain.nii.gz');
 
-%% RUN FEAT
-
-% distribute fsf files in functional dirs and run first level Feat
-for i = 1:length(ws.conditions);
-    fid = fopen(fullfile(ws.template_dir,[ws.conditions{i} '.fsf'])) ;
-    X = fread(fid) ;
-    fclose(fid) ;
-    X = char(X.') ;
-    % replace string subj_name with ws.subj_name
-    Y = strrep(X, 'subj_name', ws.subj_name) ;
-    fid2 = fopen(fullfile(ws.root_dir, 'functional', 'fsfs' ,[ws.conditions{i}, '.fsf']) ,'wt') ;
-    fwrite(fid2,Y) ;
-    fclose (fid2) ;
-    cmd = ['fsl5.0-feat ' fullfile(ws.root_dir, 'functional', 'fsfs', [ws.conditions{i}, '.fsf '])];
-    execute( cmd, ws.log_file );
-end
+% RUN FEAT
+% ws = runFeat(ws);
 
 %% RUN SECOND LEVEL FEAT
 ws = secondLevel(ws);
