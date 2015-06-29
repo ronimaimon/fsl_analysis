@@ -56,6 +56,7 @@ for i = 1:size(ws.functional_dirs,1)
     movefile(fullfile(ws.root_dir, 'functional', condition,file.name), ...
         fullfile(ws.root_dir, 'functional', condition, [condition '.nii.gz']));
 end
+addpath('matan/');
 
 %run bet with three different parameter sets
 ws.anatomical_niis = dir(fullfile(ws.root_dir, 'anatomy')); 
