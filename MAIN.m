@@ -2,7 +2,7 @@ clc; clear all; close all;
 
 %% CHOOSE CUSTOMIZED FUNC
 
-customized_func = @emptyFunc;
+pre_nii_func = @emptyFunc;
 
 %% PERFORM ANALYSIS
 
@@ -36,7 +36,7 @@ ws.log_file = fullfile(ws.root_dir, 'log.txt');
 log = fopen(ws.log_file, 'w');
 
 %run customized function 
-customized_func(ws);
+pre_nii_func(ws);
 
 %% dcm2nii
 
